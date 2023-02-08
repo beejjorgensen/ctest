@@ -21,5 +21,28 @@ Results: 5/6 passing (83.3%).
 
 ## Usage
 
-See `demo.c` and the `Makefile`.
+To use:
 
+1. `#include <ctest.h>` in the file with the tests.
+2. Compile with `-DCTEST_ENABLE`.
+
+The `ctest.h` header file defines a number of macros, all of which are
+optional.
+
+|Macro|Description|
+|-|-|
+|`CTEST_ASSERT(cond, message)`|The workhorse. The test fails if the Boolean condition `cond` is false and the message is printed.|
+|`CTEST_RESULTS()`|Print a results summary.|
+|`CTEST_VERBOSE(on)`|If set to true, all tests and results are printed. Otherwise only the failing tests are printed. Default: false.|
+|`CTEST_COLOR(on)`|Output in color. Default: true.|
+|`CTEST_EXIT()`|Exit with status `1` if any tests have failed. Otherwise exit with status `0`.|
+
+See the `Makefile` and `demo.c`.
+
+## Global Variable Pollution
+
+The `ctest.h` header file acts inappropriately and defines a number of
+global variables of external linkage. All of these begin with `ctest_`.
+
+But this allows it to keep stats and doesn't require another file to be
+linked in.
