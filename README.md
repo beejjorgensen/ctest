@@ -23,7 +23,7 @@ Results: 5/6 passing (83.3%).
 
 To use:
 
-1. `#include <ctest.h>` in the file with the tests.
+1. `#include "ctest.h"` in the file with the tests.
 2. Compile with `-DCTEST_ENABLE`.
 
 The `ctest.h` header file defines a number of macros, all of which are
